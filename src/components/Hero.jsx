@@ -59,11 +59,11 @@ const Hero = () => {
       },
     });
 
-    videoRef.current.onLoadedMetadata(() => {
+    videoRef.current.onloadedmetadata = () => {
       videoTimelineRef.to(videoRef.current, {
         currentTime: videoRef.current.duration,
       });
-    });
+    };
   }, []);
 
   return (
