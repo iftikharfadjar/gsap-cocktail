@@ -1,9 +1,43 @@
+import { useMediaQuery } from "react-responsive";
 import { featureLists, goodLists } from "../constants";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const Art = () => {
-  // useGSAP(() => {
-
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   // });
+  useGSAP(() => {
+    const start = isMobile ? "top 20%" : "top top";
+
+    const maskTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#art",
+        start,
+        end: "bottom center",
+        scrub: 1.5,
+        pin: true,
+      },
+    });
+
+    maskTimeline
+      .to(".will-fade", {
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power1.inOut",
+      })
+
+      .to(".masked-img", {
+        scale: 1.3,
+        maskPosition: "center",
+        maskSize: "400%",
+        duration: 2,
+        ease: "power1.inOut",
+      })
+      .to("#masked-content", {
+        opacity: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      });
+  });
 
   return (
     <div id="art">
@@ -38,6 +72,17 @@ const Art = () => {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="masked-container">
+          <h2 className="will-fade">Sip-Worthy Perfection</h2>
+          <div id="masked-content">
+            <h3>Made with Craft, Poured with Passion</h3>
+            <p>
+              This is a sip-worthy cocktail that combines the best of both
+              worlds.
+            </p>
+          </div>
         </div>
       </div>
     </div>
