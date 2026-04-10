@@ -55,7 +55,7 @@ const Contact = () => {
         id="f-left-leaf"
       />
       <div className="content">
-        <h2>Where to find us, see Below</h2>
+        <h2>Where to find us</h2>
         <div>
           <h3>Visit Our Bar</h3>
           <p>Jl Margahayu Jaya, Bekasi Timur</p>
